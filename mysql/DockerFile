@@ -1,0 +1,12 @@
+# Utiliser l'avant-dernière version de MySQL
+FROM mysql:8.2.0
+
+# Définir le port interne à 5655
+EXPOSE 5655
+
+# Définir le healthcheck
+HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=3 \
+  CMD mysqladmin ping -h 127.0.0.1 -P 5655 --silent
+
+# Remap le port par variable d'env (on changera au moment du run)
+ENV MYSQL_TCP_PORT=5655
