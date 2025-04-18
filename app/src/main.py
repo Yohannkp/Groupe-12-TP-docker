@@ -4,9 +4,9 @@ import os
 
 app = Flask(__name__)
 
-@app.route("/health")
+@app.route('/health')
 def health():
-    return jsonify(status="healthy"), 200
+    return jsonify({"status": "healthy"}), 200
 
 @app.route("/data")
 def data():
